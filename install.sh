@@ -5,7 +5,7 @@ read condominio
 
 aptitude update
 
-aptitude install python-pip redis-server python-redis gcc supervisor python-dev python-lxml lsof tcpdump
+aptitude install -y python-pip redis-server python-redis gcc supervisor python-dev python-lxml lsof tcpdump
 
 pip install -U Celery Flask flask-spyne
 

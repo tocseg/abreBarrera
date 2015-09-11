@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+echo -n "ingrese el # de condominio: "
+read condominio
+
 aptitude update
 
 aptitude install python-pip redis-server python-redis gcc supervisor python-dev python-lxml lsof tcpdump
@@ -116,9 +119,17 @@ if [ "$_IP" ]; then
   printf "My IP address is %s\n" "$_IP"
 fi
 
-/usr/local/bin/noip2
-
 exit 0
+
+EOL
+
+
+
+cat >/etc/cron.d/actualizaIP << EOL
+
+#ehecuta actualizacion de ip
+
+*/10 * * * * root curl http://tocseg.cl/in/actualizarIP.php?c=$condominio
 
 EOL
 
